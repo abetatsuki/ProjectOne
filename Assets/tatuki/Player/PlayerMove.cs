@@ -50,6 +50,6 @@ public class PlayerMove : MonoBehaviour
     public void Move()
     {
         _transoform.position += _currentPotion * _currentspeed * Time.deltaTime ;
-        Debug.Log(Time.deltaTime);
+      //  Debug.Log(Time.deltaTime);
     }
 }
