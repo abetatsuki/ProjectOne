@@ -40,7 +40,7 @@ public class PlayerMove : MonoBehaviour
     /// <param name="input"></param>
     public void Input(Vector2 input)
     {
-        Debug.Log("Input: " + input);
+        
         _currentPotion = new Vector3(input.x,input.y,0);
        
     }

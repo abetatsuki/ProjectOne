@@ -40,7 +40,7 @@ public class InputBuffer : MonoBehaviour
     private void OnMoveAction(InputAction.CallbackContext ctx)
     {
         Vector2 input  = ctx.ReadValue<Vector2>();
-        Debug.Log("Input: " + input);
+       
         OnMove?.Invoke(input);
     }
 

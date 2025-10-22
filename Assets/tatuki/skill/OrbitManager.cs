@@ -1,64 +1,26 @@
-using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class OrbitManager : MonoBehaviour
 {
-    [SerializeField] private Transform _playerPosition;
-    [SerializeField] private GameObject _ItemPrefab;
-    [SerializeField] private int _BlockCount = 1;
-    [SerializeField] private float _radius = 3f;
-    [SerializeField] private float _rotateSpeed = 90f;
-
-    private GameObject[] _blocks;
-    private float _currentAngle;
-    private float _angleStep;
-
-    private void Start()
-    {
-        _angleStep = 360f / _BlockCount; 
-        InitializeBlocks();
-    }
+    [SerializeField] private Transform _player;
+    
+    private List<OrbitRing> _rings = new List<OrbitRing>();
 
     private void Update()
     {
-        RotateBlocksAroundPlayer();
-    }
-/// <summary>
-/// ブロックを初期化(生成と参照保持)
-/// </summary>
-    private void InitializeBlocks()
-    {
-        _blocks = new GameObject[_BlockCount];
-        for (int i = 0; i < _BlockCount; i++)
+        foreach (var ring in _rings)
         {
-            GameObject newBlock = Instantiate(_ItemPrefab, transform);
-            _blocks[i] = newBlock;
+            ring.UpdateRing(_player);
         }
     }
-/// <summary>
-/// ブロック全体を回転更新
-/// </summary>
-    private void RotateBlocksAroundPlayer()
-    {
-        UpdateAngle();
-        UpdateBlockPositions();
-    }
 
-    private void UpdateAngle()
+    /// <summary>
+    /// 新しいリングを追加
+    /// </summary>
+    public void AddRing(GameObject prefab, int count, float radius, float speed)
     {
-        _currentAngle = Mathf.Repeat(_currentAngle + _rotateSpeed * Time.deltaTime, 360f);
+        OrbitRing newRing = new OrbitRing(prefab, count, radius, speed, transform);
+        _rings.Add(newRing);
     }
-
-    private void UpdateBlockPositions()
-    {
-        for (int i = 0; i < _BlockCount; i++)
-        {
-            float angle = (i*_angleStep +  _currentAngle) * Mathf.Deg2Rad;
-            Vector3 direction = new Vector3(Mathf.Cos(angle), Mathf.Sin(angle),0)*_radius;
-            
-            _blocks[i].transform.position = _playerPosition.position + direction;
-            _blocks[i].transform.rotation = Quaternion.identity;
-        }
-    }
-    
 }
