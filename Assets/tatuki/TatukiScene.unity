@@ -263,8 +263,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1290120725}
-        m_TargetAssemblyTypeName: ItemGiver, Assembly-CSharp
-        m_MethodName: Add
+        m_TargetAssemblyTypeName: TestOrbit, Assembly-CSharp
+        m_MethodName: AddSkill
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -882,7 +882,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::invoke
   orbitManager: {fileID: 2047866883}
-  itemPrefab: {fileID: 5151420618179693137, guid: a157c2d41c20d8d45aeb0045b6af624d, type: 3}
+  blockPrefab: {fileID: 5151420618179693137, guid: a157c2d41c20d8d45aeb0045b6af624d, type: 3}
 --- !u!1 &1638247539 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6432379433421598703, guid: 5ddf13d8a1d08fd4d8ad0d69b3c61fe4, type: 3}
