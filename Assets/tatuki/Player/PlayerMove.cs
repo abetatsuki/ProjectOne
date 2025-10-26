@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
         _transoform = GetComponent<Transform>();
         _currentspeed = _playerManager.CurrentStatus.Speed;
         Debug.Log(_currentspeed);
+        Debug.Log(_playerManager.CurrentStatus.MaxHealth);
     }
 
     private void Update()
