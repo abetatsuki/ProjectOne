@@ -8,7 +8,7 @@ public class BattleManager : MonoBehaviour
     [SerializeField] private List<EnemyController> enemies;
     [SerializeField] private UIManager uiManager;
 
-    private enum BattleState { PlayerTurn, EnemyTurn, Win, Lose }
+    private enum BattleState { PlayerTurn, SelectTarget, EnemyTurn, Win, Lose }
     private BattleState currentState = BattleState.PlayerTurn;
 
     private void Start()
@@ -30,15 +30,32 @@ public class BattleManager : MonoBehaviour
         switch (command)
         {
             case "Attack":
-                player.Attack(enemies[0]); // 仮で最初の敵を攻撃
+                // 🟢 攻撃モードに切り替える
+                Debug.Log("攻撃対象を選んでください！");
+                currentState = BattleState.SelectTarget;
+                uiManager.HideCommands();
                 break;
+
             case "Skill":
                 player.Skill(enemies);
+                EndPlayerTurn();
                 break;
+
             case "Defend":
                 player.Defend();
+                EndPlayerTurn();
                 break;
         }
+    }
+
+    // 🟢 敵クリック時に呼ばれる
+    public void OnEnemyClicked(EnemyController enemy)
+    {
+        if (currentState != BattleState.SelectTarget) return;
+        if (enemy.IsDead) return;
+
+        Debug.Log($"{enemy.Name} を攻撃！");
+        player.Attack(enemy);
 
         EndPlayerTurn();
     }
@@ -63,7 +80,6 @@ public class BattleManager : MonoBehaviour
             }
         }
 
-        // 🟢 敵のターン終了後に防御解除
         player.ResetDefend();
 
         if (!CheckBattleEnd())

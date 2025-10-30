@@ -3,8 +3,9 @@ using System.Collections.Generic;
 
 public class PlayerController : Character
 {
+   [SerializeField]private float defenseRate = 0.5f;
     private BattleManager battleManager;
-    private bool isDefending = false; // 🟢 防御状態フラグ
+    private bool isDefending = false; //  防御状態フラグ
 
     private void Start()
     {
@@ -38,7 +39,7 @@ public class PlayerController : Character
     {
         if (isDefending)
         {
-            damage = Mathf.FloorToInt(damage * 0.5f); // 半減
+            damage = Mathf.FloorToInt(damage * defenseRate); // 半減
             Debug.Log($"{Name} は防御してダメージを軽減！");
         }
 
