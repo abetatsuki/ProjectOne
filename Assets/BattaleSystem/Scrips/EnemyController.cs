@@ -20,6 +20,17 @@ public class EnemyController : Character
         target.TakeDamage(attackPower);
     }
 
+    public override void Die()
+    {
+        Debug.Log($"{Name}は倒れた！");
+        var dropItem = GetComponent<EnemyDropItem>();
+        if (dropItem != null)
+        {
+            dropItem.TryDropItems(transform.position);
+        }
+        Destroy(gameObject);
+    }
+
     // 🟢 マウスクリックで呼ばれる
     private void OnMouseDown()
     {

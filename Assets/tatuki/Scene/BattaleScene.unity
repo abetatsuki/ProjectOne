@@ -209,6 +209,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &226918525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 226918526}
+  m_Layer: 0
+  m_Name: ItemCollector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &226918526
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 226918525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.08703, y: -12.82328, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &282243245
 GameObject:
   m_ObjectHideFlags: 0
@@ -839,7 +870,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &788131206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1189,7 +1220,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1015974492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1810,7 +1841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   characterName: tatuki
   maxHp: 100
-  attackPower: 10
+  attackPower: 100
   defenseRate: 0.5
 --- !u!4 &1391092460
 Transform:
@@ -2344,6 +2375,7 @@ GameObject:
   - component: {fileID: 1867049641}
   - component: {fileID: 1867049644}
   - component: {fileID: 1867049645}
+  - component: {fileID: 1867049646}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -2512,6 +2544,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1867049646
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867049638}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87c821341d95b5c43a95a385090d1852, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyDropItem
+  dropItems:
+  - itemPrefab: {fileID: 891603131404918447, guid: 90b39cdeb93b2c74293f9132fc828f49, type: 3}
+    dropChance: 1
 --- !u!1 &1949742588
 GameObject:
   m_ObjectHideFlags: 0
@@ -2616,3 +2663,4 @@ SceneRoots:
   - {fileID: 1733728474}
   - {fileID: 832769059}
   - {fileID: 1032394539}
+  - {fileID: 226918526}
